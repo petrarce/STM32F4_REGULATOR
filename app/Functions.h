@@ -3,17 +3,24 @@
 	//
 	//finds new Velocity and Phase of engine and calls function with delay, equals to the velocity
 	//
-	void GlobalFunction(float PgaseKurrent, float PhaseGiven);
+	void Start(float V, float dt, float Accel, float Vmax);
 	//
 	//Sends signfl (High with dt delay (time to set a positive sihnal) Low with "Delay" delay)
 	//
-	void SendSignalWithDelay(float Delay);
+	void Stop(float V, float dt, float Accel,float KurrPhase,float GivPhase);
 	//
-	//Finds new speed according to a parameters (
-	//-V-current speed 
-	//-dt-time on which the current speed was working )
+	//Finds new speed according to a parameters 
 	//
-	float FindNewV(float V, float dt, float PhaseKurrent, float PhaseGiven, float PhaseStop,float Accel, float Vmin); 
+	float GetV(float Vprev,float dt, float Accel);
+	//
+	//Finds new Phase according to a parameters 
+	//
+	float GetPhase(float Pprev,dt,V);
+	//
+	//Finds new Frequency according to a parameters 
+	//
+	float GetFrequency(float V);
+
 
 #endif // !Functions
 

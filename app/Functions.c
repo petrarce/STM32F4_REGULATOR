@@ -1,53 +1,59 @@
 #include "Functions.h"
 #include "Constants.h"
-#include "TimingFunctions.h"
 
 
 //The function 
-void GlobalFunction(float PhaseKurrent, float PhaseGiven)
+//
+//Starts engine (gets it from min speed to max speed)
+//
+float
+float Start(float V, float dt, float Accel, float Vmax)
 {
-	float dt = dt_Koef*abs(PhaseKurrent - PhaseGiven);
-	float V = Vmin;
-	float PhaseStop=0;
+	while(V<Vmax)
+	{
+		OCR=GetFrequency(V);//send 1 dt seconds with GetFrequency(V) frequency
+		V=GetV(V,dt,Accel)//get current V
+		delayms(dt);
+	}
+	return Vmax;
+}
+
+float Stop(float V, float dt, float Accel,float KurrPhase,float GivPhase)
+{
+float StopPhase=V*(1 + V / Accel);
 	do
 	{
-		SendSignalWithDelay(1/V,dt);
-		PhaseStop = V*(1 + V / Accel);
-		V = FindNewV(V, dt, PhaseKurrent, PhaseGiven,PhaseStop ,Accel, Vmin);
-		PhaseKurrent = PhaseKurrent + V*dt;
-	}
-	while(abs(PhaseKurrent - PhaseGiven)>Tollerance);
-}
-
-float FindNewV(float V, float dt, float PhaseKurrent, float PhaseGiven, float PhaseStop, float Accel, float Vmax)
-{
-	if(abs(PhaseGiven - PhaseKurrent) >= PhaseStop)
-	{
-		if(V < Vmax)
-			V = V + Accel*dt;
+		if(GivPhase-KurrPhase>StopPhase||GivPhase-KurrPhase<0)
+		{
+			//send 1 dt seconds with GetFrequency(V) frequency
+		}
 		else
-			V = Vmax;
-	}
-	else
-	{
-		V = V - Accel*dt;
-		if(V < Vmin)
-			V = Vmin;
-	}
-	return V;
+		{
+			V=GetV(V,dt,-Accel);
+			OCR=GetFrequency(V)//send 1 dt seconds with GetFrequency(V) frequency
+
+		}
+		delayms(dt);
+	}while(V>0)
+	return 0;
 }
 
-void SendSignalWithDelay(float Delay,dt)
+float GetV(float Vprev,float dt, float Accel)
 {
-	long Counter=dt/Delay;
-	for(int i=0;i<Counter;i++)
-	{
-		//SendOnPort##(1)
-		delay_ms(Set_High_Front_Time);
-		//SendOnPort##(0);
-		delay_ms(Delay);
-	}
+	return Vprev+dt*Accel;
 }
+
+float GetPhase(float Pprev,dt,V)
+{
+	return Pprev+V*dt;
+}
+
+float GetFrequency(float V)
+{
+	return V*BaseF;
+}
+
+
 
 float abs(float Digit)
 {
