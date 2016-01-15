@@ -383,7 +383,7 @@ void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
   assert_param(IS_GPIO_PIN(GPIO_Pin));
 
-  GPIOx->BSRRL = GPIO_Pin;
+  GPIOx->BSRRL |= GPIO_Pin;
 }
 
 /**
@@ -402,7 +402,7 @@ void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
   assert_param(IS_GPIO_PIN(GPIO_Pin));
 
-  GPIOx->BSRRH = GPIO_Pin;
+  GPIOx->BSRRH |= GPIO_Pin;
 }
 
 /**
