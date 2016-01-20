@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.300652261/PATH/delimiter=;
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.300652261/PATH/operation=replace
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.300652261/PATH/value=C\:\\ToolsARM\\gcc_arm\\5.2 2015q4\\bin;C\:/Program Files/Java/jre1.8.0_65/bin/server;C\:/Program Files/Java/jre1.8.0_65/bin;C\:/Program Files/Java/jre1.8.0_65/lib/amd64;C\:\\ProgramData\\Oracle\\Java\\javapath;C\:\\Program Files\\Mentor\\7.9.5EE\\SDD_HOME\\common\\win32\\bin;C\:\\Program Files\\Mentor\\7.9.5EE\\SDD_HOME\\common\\win32\\lib;C\:\\Program Files\\Mentor\\7.9.5EE\\MGC_HOME.ixn\\bin;C\:\\Program Files\\Mentor\\7.9.5EE\\MGC_HOME.ixn\\lib;C\:\\Windows\\system32;C\:\\Windows;C\:\\Windows\\System32\\Wbem;C\:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C\:\\CooCox\\CoIDE_V2Beta\\gcc\\bin;C\:\\CooCox\\CoIDE_V2Beta\\bin;;C\:\\eclipse;C\:\\ToolsARM\\GnuWin32\\GnuWin32\\bin
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.300652261/append=true
+environment/project/ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.300652261/appendContributed=true
