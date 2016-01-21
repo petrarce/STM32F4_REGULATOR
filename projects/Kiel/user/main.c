@@ -42,6 +42,7 @@ int main()
 	while(1)
 	{
 		//PUSHED=GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
+		FREQ_DELAY=SEC/(2*VELOC);
 		
 		if(!(STRT||STP))
 			continue;
@@ -51,7 +52,6 @@ int main()
 			VELOC=Start(VELOC, dt, Accel, Vmax);
 		delay_ms(dt*SEC);//
 		VELOC+=1;
-		FREQ_DELAY=SEC/(2*VELOC);
 	}
 	return 0;
 }
