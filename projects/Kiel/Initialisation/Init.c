@@ -16,7 +16,7 @@ void INIT_LED(GPIO_InitTypeDef* gpioConf)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 	
-	gpioConf->GPIO_Pin=GPIO_Pin_12|GPIO_Pin_13;
+	gpioConf->GPIO_Pin=GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14;
 	gpioConf->GPIO_Mode=GPIO_Mode_OUT;
 	gpioConf->GPIO_Speed=GPIO_Speed_100MHz;
 	gpioConf->GPIO_OType=GPIO_OType_PP;
@@ -27,7 +27,7 @@ void INIT_LED(GPIO_InitTypeDef* gpioConf)
 
 void INIT_SysTick()
 {
-	SysTick_Config(SystemCoreClock/1000);
+	SysTick_Config(SystemCoreClock/SEC);
 }
 void Delay(int value)
 {

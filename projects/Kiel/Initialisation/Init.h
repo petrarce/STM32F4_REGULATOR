@@ -1,7 +1,7 @@
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_gpio.h"
 
-#define SECOND 1000;
+#define SEC 100000
 
 
 void INIT_BUTTON(GPIO_InitTypeDef* gpioConf);
