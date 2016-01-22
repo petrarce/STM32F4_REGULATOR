@@ -1,6 +1,8 @@
 #include "Init.h"
 
 
+
+
 void INIT_BUTTON(GPIO_InitTypeDef* gpioConf)
 {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA,ENABLE);
@@ -25,9 +27,9 @@ void INIT_LED(GPIO_InitTypeDef* gpioConf)
 	GPIO_Init(GPIOD,gpioConf);
 }
 
-void INIT_SysTick()
+void INIT_SysTick(int BASE)
 {
-	SysTick_Config(SystemCoreClock/SEC);
+	SysTick_Config(SystemCoreClock/BASE);
 }
 void Delay(int value)
 {

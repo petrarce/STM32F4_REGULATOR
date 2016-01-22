@@ -588,7 +588,7 @@
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\user\main.c</FilePath>
+              <FilePath>.\TEST\main.c</FilePath>
             </File>
           </Files>
         </Group>
