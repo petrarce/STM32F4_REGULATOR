@@ -19,7 +19,7 @@ float Start(float V, float dt, float Accel, float Vmax)
 	return V;
 }
 
-float Stop(float V, float dt, float Accel,float* KurrPhase,float GivPhase)
+float Stop(float V, float dt, float Accel,float* KurrPhase,float GivPhase,float Vmin)
 {
 	float StopPhase=V*(1 + V / Accel);	
 		if(abs(GivPhase-*KurrPhase-StopPhase)>5||GivPhase-*KurrPhase<0)
@@ -32,7 +32,7 @@ float Stop(float V, float dt, float Accel,float* KurrPhase,float GivPhase)
 			 V=GetV(V,dt,-Accel);
 
 		}
-		return (V>0)?V:0;
+		return (V>Vmin)?V:0;
 }
 
 
@@ -47,14 +47,6 @@ float GetPhase(float Pprev,float dt,float V)
 {
 	return Pprev+V*dt;
 }
-
-
-
-
-
-
-
-
 
 float abs(float Digit)
 {

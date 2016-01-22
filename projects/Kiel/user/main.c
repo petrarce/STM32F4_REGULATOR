@@ -3,11 +3,10 @@
 #include "Init.h"
 #include "Constants.h"
 
-int HalfSecDealy=17605633;
 
 short int Pushed=0;
-short int STRT=1;
-short int STP=0;
+short int STRT=0;
+short int STP=1;
 short int PUSHED=0;
 
 
@@ -16,6 +15,8 @@ float GivenPhase=90;
 int FREQ_DELAY=0;
 int FREQ_DELAY_VALUE=0;
 int DELAY_VALUE=0;
+float VELOC=10;
+
 
 void SysTick_Handler(void);
 void delay_ms(int);
@@ -26,14 +27,10 @@ void TEST_F(void);
 
 int main()
 {
-	int VELOC=0;
-	int TempVal=0;
-	int i=0;
-	
 	GPIO_InitTypeDef gpioConf;
 	INIT_BUTTON(&gpioConf);
 	INIT_LED(&gpioConf);
-	INIT_SysTick();
+	INIT_SysTick(BASE);
 	GPIO_SetBits(GPIOD,GPIO_Pin_13);
 	GPIO_SetBits(GPIOD,GPIO_Pin_12);
 	GPIO_SetBits(GPIOD,GPIO_Pin_14);
@@ -41,16 +38,15 @@ int main()
 	while(1)
 	{
 		//PUSHED=GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
-		FREQ_DELAY=SEC/(2*VELOC);
-		
+		FREQ_DELAY=SEC/(VELOC);		
 		if(!(STRT||STP))
 			continue;
-		if(!STRT||STP)
-			VELOC=Stop(VELOC, dt, Accel, &CurrentPhase,GivenPhase);
-		if(STRT||!STP)
+		if(!STRT&&STP)
+			VELOC=Stop(VELOC, dt, Accel, &CurrentPhase,GivenPhase,Vmin);
+		if(STRT&&!STP)
 			VELOC=Start(VELOC, dt, Accel, Vmax);
 		delay_ms(dt*SEC);//
-		VELOC+=1;
+		//VELOC+=1;
 	}
 	return 0;
 }

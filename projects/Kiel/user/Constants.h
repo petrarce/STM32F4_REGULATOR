@@ -3,9 +3,9 @@
 #define SEC BASE*0.89
 
 //set speedin and acceleration in deg/sec
-const float Vmin = 1;
-const float Vmax = 15;
-const float Accel = 3;
+const float Vmin = 5;
+const float Vmax = 24;
+const float Accel = 1;
 const float Tollerance = 0.01;
 const float dt=1;
 const float Set_High_Time=1;//?????
