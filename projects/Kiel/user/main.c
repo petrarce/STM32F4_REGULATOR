@@ -5,17 +5,17 @@
 
 
 short int Pushed=0;
-short int STRT=0;
-short int STP=1;
+short int STRT=1;
+short int STP=0;
 short int PUSHED=0;
 
 
 float CurrentPhase=0;
-float GivenPhase=90;
+float GivenPhase=360;
 int FREQ_DELAY=0;
 int FREQ_DELAY_VALUE=0;
 int DELAY_VALUE=0;
-float VELOC=5*DEG_SEC;
+float VELOC=0;//5*DEG_SEC;
 
 
 void SysTick_Handler(void);
@@ -36,7 +36,12 @@ int main()
 	GPIO_SetBits(GPIOD,GPIO_Pin_14);
 	while(1)
 	{
-		FREQ_DELAY=SEC/(VELOC);		
+		if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0))
+		{
+			STRT=0;
+			STP=1;
+		}
+		FREQ_DELAY=GET_FREQ_DELAY(VELOC);//SEC/(VELOC);		
 		if(!(STRT||STP))
 			continue;
 		if(!STRT&&STP)
@@ -76,9 +81,11 @@ void delay_ms(int value)
 }
 
 
-int GET_FREQ_DELAY(float V)
+int GET_FREQ_DELAY(float Value)
 {
-	return 500/V;
+	if(Value==0)
+		return 0;
+	return SEC/(Value*DEG_SEC);
 }
 
 void TEST_F()
