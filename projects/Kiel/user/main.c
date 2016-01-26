@@ -15,7 +15,7 @@ float GivenPhase=90;
 int FREQ_DELAY=0;
 int FREQ_DELAY_VALUE=0;
 int DELAY_VALUE=0;
-float VELOC=10;
+float VELOC=5*DEG_SEC;
 
 
 void SysTick_Handler(void);
@@ -34,19 +34,16 @@ int main()
 	GPIO_SetBits(GPIOD,GPIO_Pin_13);
 	GPIO_SetBits(GPIOD,GPIO_Pin_12);
 	GPIO_SetBits(GPIOD,GPIO_Pin_14);
-	//FREQ_DELAY=500;
 	while(1)
 	{
-		//PUSHED=GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
 		FREQ_DELAY=SEC/(VELOC);		
 		if(!(STRT||STP))
 			continue;
 		if(!STRT&&STP)
-			VELOC=Stop(VELOC, dt, Accel, &CurrentPhase,GivenPhase,Vmin);
+			VELOC=Stop(VELOC, dt, Accel, &CurrentPhase,GivenPhase,Vmin,Vmax);
 		if(STRT&&!STP)
 			VELOC=Start(VELOC, dt, Accel, Vmax);
-		delay_ms(dt*SEC);//
-		//VELOC+=1;
+		delay_ms(dt*SEC);
 	}
 	return 0;
 }

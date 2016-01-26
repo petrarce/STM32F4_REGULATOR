@@ -15,7 +15,7 @@ _Bool PUSHED=0;
 // variables
 float CurrentPhase=0;
 float GivenPhase=90;
-int VELOC=1;
+int VELOC=20*DEG_SEC;
 int FREQ_DELAY=0;
 int FREQ_DELAY_VALUE=0;
 int DELAY_VALUE=0;
@@ -40,14 +40,11 @@ int main()
 	GPIO_SetBits(GPIOD,GPIO_Pin_13);
 	GPIO_SetBits(GPIOD,GPIO_Pin_12);
 	GPIO_SetBits(GPIOD,GPIO_Pin_14);
-	//FREQ_DELAY=500;
 	FREQ_DELAY=SEC;
+	
 	while(1)
 	{
-		if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0))
-		{
-			FREQ_DELAY=SEC/(VELOC*DEG_SEC);
-		}
+			FREQ_DELAY=SEC/(VELOC);
 	}
 	return 0;
 }

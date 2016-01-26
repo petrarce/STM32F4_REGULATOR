@@ -19,20 +19,25 @@ float Start(float V, float dt, float Accel, float Vmax)
 	return V;
 }
 
-float Stop(float V, float dt, float Accel,float* KurrPhase,float GivPhase,float Vmin)
+float Stop(float V, float dt, float Accel,float* KurrPhase,float GivPhase,float Vmin,float Vmax)
 {
 	float StopPhase=V*(1 + V / Accel);	
-		if(abs(GivPhase-*KurrPhase-StopPhase)>5||GivPhase-*KurrPhase<0)
-		{
-			*KurrPhase=GetPhase(*KurrPhase,dt,V);			
-		}
-		else
-		{
-			*KurrPhase=GetPhase(*KurrPhase,dt,V);
-			 V=GetV(V,dt,-Accel);
+	if(abs(GivPhase-*KurrPhase-StopPhase)>5||GivPhase-*KurrPhase<0)//!!!!needs dependency between StopPhaseERROR vs (dt,Vmin,Vmax,Accel)
+	{
+		*KurrPhase=GetPhase(*KurrPhase,dt,V);
+		Start(V,dt,Accel,Vmax);
+	}
+	else
+	{
+		*KurrPhase=GetPhase(*KurrPhase,dt,V);
+		V=GetV(V,dt,-Accel);
 
-		}
-		return (V>Vmin)?V:0;
+	}
+	V=(V>Vmin)?V:Vmin;
+	if(abs(GivPhase-*KurrPhase)<2)//!!!!needs dependency between (GivPhase-*KurrPhase)ERROR vs (dt,Vmin,Vmax,Accel)
+		return 0;
+	else 
+		return V;
 }
 
 
