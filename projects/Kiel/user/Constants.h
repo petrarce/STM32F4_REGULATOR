@@ -4,6 +4,6 @@
 
 //set speedin and acceleration in deg/sec
 const float Vmin = 5;
-const float Vmax = 180;
+const float Vmax = 20;
 const float Accel = 5;
 const float dt=0.001;

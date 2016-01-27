@@ -22,7 +22,9 @@
 	//Finds new Frequency according to a parameters 
 	//
 	int GetFrequency(float);
-	
+	//
+	//Find differens between two angels
+	//
 	float GetDiffer(float,float);
 	
 	float abs(float );
