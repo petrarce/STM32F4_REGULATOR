@@ -9,7 +9,7 @@
 	//
 	//Sends signfl (High with dt delay (time to set a positive sihnal) Low with "Delay" delay)
 	//
-	float Stop(float , float , float ,float*,float,float,float);
+	float Stop(float , float , float ,float*,float,float,float, float);
 	//
 	//Finds new speed according to a parameters 
 	//

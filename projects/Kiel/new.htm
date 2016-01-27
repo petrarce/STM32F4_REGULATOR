@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\new.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\new.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed Jan 27 13:24:07 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed Jan 27 17:14:46 2016
 <BR><P>
 <H3>Maximum Stack Usage =         80 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -739,7 +739,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[6e]"></a>main</STRONG> (Thumb, 206 bytes, Stack size 16 bytes, main.o(.text))
+<P><STRONG><a name="[6e]"></a>main</STRONG> (Thumb, 210 bytes, Stack size 16 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = main &rArr; GET_FREQ_DELAY &rArr; __aeabi_d2iz
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -790,24 +790,24 @@ Global Symbols
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8b]"></a>abs</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, functions.o(.text))
+<P><STRONG><a name="[8c]"></a>abs</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, functions.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Stop
 </UL>
 
-<P><STRONG><a name="[8c]"></a>GetPhase</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, functions.o(.text))
+<P><STRONG><a name="[8a]"></a>GetPhase</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, functions.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Stop
 </UL>
 
-<P><STRONG><a name="[8a]"></a>GetDiffer</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, functions.o(.text))
+<P><STRONG><a name="[8b]"></a>GetDiffer</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, functions.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Stop
 </UL>
 
-<P><STRONG><a name="[82]"></a>Stop</STRONG> (Thumb, 244 bytes, Stack size 4 bytes, functions.o(.text))
+<P><STRONG><a name="[82]"></a>Stop</STRONG> (Thumb, 296 bytes, Stack size 4 bytes, functions.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Stop &rArr; Start
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetDiffer
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetPhase
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;abs
+<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetDiffer
+<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetPhase
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;abs
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetV
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Start
 </UL>

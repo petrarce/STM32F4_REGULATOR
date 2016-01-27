@@ -45,7 +45,7 @@ int main()
 		if(!(STRT||STP))
 			continue;
 		if(!STRT&&STP)
-			VELOC=Stop(VELOC, dt, Accel, &CurrentPhase,GivenPhase,Vmin,Vmax);
+			VELOC=Stop(VELOC, dt, Accel, &CurrentPhase,GivenPhase,Vmin,Vmax,Vmax_STOP);
 		if(STRT&&!STP)
 			VELOC=Start(VELOC, dt, Accel, Vmax);
 		delay_ms(dt*SEC);
