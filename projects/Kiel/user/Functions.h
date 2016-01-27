@@ -23,6 +23,8 @@
 	//
 	int GetFrequency(float);
 	
+	float GetDiffer(float,float);
+	
 	float abs(float );
 
 

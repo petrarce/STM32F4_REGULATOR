@@ -4,7 +4,6 @@
 #include "Constants.h"
 
 
-int HalfSecDealy=17605633;
 
 //
 _Bool Pushed=0;
@@ -15,15 +14,15 @@ _Bool PUSHED=0;
 // variables
 float CurrentPhase=0;
 float GivenPhase=90;
-int VELOC=20*DEG_SEC;
-int FREQ_DELAY=0;
-int FREQ_DELAY_VALUE=0;
-int DELAY_VALUE=0;
+uint_32 VELOC=20*DEG_SEC;
+uint_32 FREQ_DELAY=0;
+uint_32 FREQ_DELAY_VALUE=0;
+uint_32 DELAY_VALUE=0;
 // functions
 void SysTick_Handler(void);
-void delay_ms(int);
+void delay_ms(uint_32);
 void TOOGLE_BITS(void);
-int GET_FREQ_DELAY(float);
+uint_32 GET_FREQ_DELAY(float);
 
 //int choose 
 void TEST_F(void);
@@ -44,7 +43,7 @@ int main()
 	
 	while(1)
 	{
-			FREQ_DELAY=SEC/(VELOC);
+			FREQ_DELAY=SEC/(DEG_SEC*10);
 	}
 	return 0;
 }
@@ -71,7 +70,7 @@ void SysTick_Handler()
 		DELAY_VALUE--;
 }
 
-void delay_ms(int value)
+void delay_ms(uint_32 value)
 {
 	if(value<0)
 		return;

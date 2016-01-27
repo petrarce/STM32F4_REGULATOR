@@ -68,3 +68,15 @@ float abs(float Digit)
 		return (Digit*(-1));
 	return Digit;
 }
+
+float GetDiffer(float ANG_1,float ANG_2)
+{
+	float temp=ANG_1-ANG_2;
+	if(temp>0)
+		return temp;
+	else
+		return 360+temp;
+}
+
+
+
