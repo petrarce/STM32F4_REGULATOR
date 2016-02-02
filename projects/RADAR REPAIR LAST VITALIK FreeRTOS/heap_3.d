@@ -1,0 +1,11 @@
+.\heap_3.o: freertos\heap_3.c
+.\heap_3.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\heap_3.o: .\freertos\include\FreeRTOS.h
+.\heap_3.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
+.\heap_3.o: .\freertos\include\projdefs.h
+.\heap_3.o: .\freertos\include\FreeRTOSConfig.h
+.\heap_3.o: .\freertos\include\portable.h
+.\heap_3.o: .\freertos\include\portmacro.h
+.\heap_3.o: .\freertos\include\mpu_wrappers.h
+.\heap_3.o: .\freertos\include\task.h
+.\heap_3.o: .\freertos\include\list.h

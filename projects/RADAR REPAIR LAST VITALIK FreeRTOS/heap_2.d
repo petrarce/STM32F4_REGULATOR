@@ -1,0 +1,13 @@
+.\heap_2.o: SourceRTOS\heap_2.c
+.\heap_2.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\heap_2.o: .\IncludeRTOS\FreeRTOS.h
+.\heap_2.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
+.\heap_2.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\heap_2.o: .\SourceRTOS\FreeRTOSConfig.h
+.\heap_2.o: .\IncludeRTOS\projdefs.h
+.\heap_2.o: .\IncludeRTOS\portable.h
+.\heap_2.o: .\IncludeRTOS\deprecated_definitions.h
+.\heap_2.o: .\SourceRTOS\portmacro.h
+.\heap_2.o: .\IncludeRTOS\mpu_wrappers.h
+.\heap_2.o: .\IncludeRTOS\task.h
+.\heap_2.o: .\IncludeRTOS\list.h

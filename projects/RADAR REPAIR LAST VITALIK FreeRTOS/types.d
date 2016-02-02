@@ -1,0 +1,14 @@
+.\types.o: MyCode\Types.c
+.\types.o: MyCode\Types.h
+.\types.o: .\freertos\include\FreeRTOS.h
+.\types.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
+.\types.o: .\freertos\include\projdefs.h
+.\types.o: .\freertos\include\FreeRTOSConfig.h
+.\types.o: .\freertos\include\portable.h
+.\types.o: .\freertos\include\portmacro.h
+.\types.o: .\freertos\include\mpu_wrappers.h
+.\types.o: .\freertos\include\queue.h
+.\types.o: .\freertos\include\task.h
+.\types.o: .\freertos\include\list.h
+.\types.o: .\freertos\include\semphr.h
+.\types.o: .\freertos\include\croutine.h

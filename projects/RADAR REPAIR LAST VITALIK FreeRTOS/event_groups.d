@@ -1,0 +1,15 @@
+.\event_groups.o: SourceRTOS\event_groups.c
+.\event_groups.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\event_groups.o: .\IncludeRTOS\FreeRTOS.h
+.\event_groups.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
+.\event_groups.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\event_groups.o: .\SourceRTOS\FreeRTOSConfig.h
+.\event_groups.o: .\IncludeRTOS\projdefs.h
+.\event_groups.o: .\IncludeRTOS\portable.h
+.\event_groups.o: .\IncludeRTOS\deprecated_definitions.h
+.\event_groups.o: .\SourceRTOS\portmacro.h
+.\event_groups.o: .\IncludeRTOS\mpu_wrappers.h
+.\event_groups.o: .\IncludeRTOS\task.h
+.\event_groups.o: .\IncludeRTOS\list.h
+.\event_groups.o: .\IncludeRTOS\timers.h
+.\event_groups.o: .\IncludeRTOS\event_groups.h
