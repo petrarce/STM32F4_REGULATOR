@@ -29,42 +29,33 @@
 void vMainSheduler(void* pvParameters)
 	{
 		struct pTaskParamsType* TaskParams=(struct pTaskParamsType*) pvParameters;
-		short Start=0,Stop=0;
+		short Start=0,Stop=0,CurrFunc=1;
 		while(1)
 		{
 			//check for switching signal
 			if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_0)==1)
 			{
-				while(GPIO_ReadOutputDataBit(GPIOA,GPIO_Pin_0));
-				Start=Stop;
-				if(Stop==1)
-					Stop=0;
-				else 
+				//while(GPIO_ReadOutputDataBit(GPIOA,GPIO_Pin_0)){};
+				vTaskDelay(SEC*2);
+				Start=CurrFunc;
+				if(CurrFunc==0)
+				{
 					Stop=1;
+					CurrFunc=1;
+				}
+				else 
+				{
+					Stop=0;
+					CurrFunc=0;
+				}
 			}
 			//---
 			//if start signal income
 			//
 			if(Start==1)
 			{
-				if(V_MAIN<Vmax)
-				{
-					if(!TaskParams->Task1_state)
-					{
-						//start acceleration
-						TaskParams->Task1_event=TASK_ON;
-						TaskParams->Task2_event=TASK_OFF;
-						while(TaskParams->Task2_state==TASK_ON){};//!!!!!<2> wait foe thread <x> stops
-						vTaskResume(TaskParams->Task1);
-					}
-				}
-				else
-				{
-					//stop acceleration if needed
-					TaskParams->Task1_event=TASK_OFF;
-					while(TaskParams->Task1_state==TASK_ON){};//!!!!!<1>
-					V_MAIN=Vmax;
-				}
+				vTaskSuspend(TaskParams->Task2);
+				vTaskResume(TaskParams->Task1);
 				Start=0;
 			}
 			else
@@ -73,69 +64,38 @@ void vMainSheduler(void* pvParameters)
 				//---
 				if(Stop==1)
 				{
-					if(V_MAIN>0)
-					{
-						if(!TaskParams->Task2_state)
-						{
-							TaskParams->Task2_event=TASK_ON;					
-							TaskParams->Task1_event=TASK_OFF;
-							while(TaskParams->Task1_state==TASK_ON){};//!!!!!<1>weit while Task1 stops
-							vTaskResume(TaskParams->Task2);
-						}
-					}
-					else
-					{
-						TaskParams->Task2_event=TASK_OFF;
-						while(TaskParams->Task2_state==TASK_ON){};//!!!!!<2>
-						V_MAIN=0;
-					}
+					vTaskSuspend(TaskParams->Task1);
+					vTaskResume(TaskParams->Task2);
 					Stop=0;
 				}
-			//---
-			//Start or stop Toogling if needed
-			//---
-			if(V_MAIN==0)
-			{
-				vTaskSuspend(TaskParams->Task3);
-			}
-			else
-				{
-					vTaskResume(TaskParams->Task3);
-				}
-			//--
 		}
 		vTaskDelete(NULL);
 	}
 
 void vAcceleration(void* pvParameters)
 	{
-		//struct pTaskParamsType* TaskParams=(struct pTaskParamsType*) pvParameters;
 		struct pTaskParamsType* TaskParams=(struct pTaskParamsType*) pvParameters;
 
 		while(1)
 		{
-			if((!TaskParams->Task1_event&!TaskParams->Task2_event)||(!TaskParams->Task1_event&TaskParams->Task2_event))
+			if(V_MAIN<Vmax)
 			{
-				TaskParams->Task1_state=TASK_OFF;
-				vTaskSuspend(NULL);
-				TaskParams->Task1_state=TASK_ON;
+				//-------------------------------------
+				//-----------MAIN CODE-----------------
+				V_MAIN=Start(V_MAIN,dt,Accel,Vmax);
+				vTaskDelay(dt*SEC);
+				//-------------------------------------
+				//-----------TEST CODE-----------------
+				/*GPIO_SetBits(GPIOD,GPIO_Pin_13);
+				vTaskDelay(SEC/(V_MAIN));
+				GPIO_ResetBits(GPIOD,GPIO_Pin_13);
+				vTaskDelay(SEC/(V_MAIN));*/
+				//------------------------------------
 			}
 			else
 			{
-				if(V_MAIN<Vmax)
-				{
-					//-------------------------------------
-					//-----------MAIN CODE-----------------
-					//V_MAIN=Start(V_MAIN,dt,Accel,Vmax);
-					//vTaskDelay(dt*SEC);
-					//-------------------------------------
-					//-----------TEST CODE-----------------
-					GPIO_SetBits(GPIOD,GPIO_Pin_13);
-					vTaskDelay(SEC/(V_MAIN));
-					GPIO_ResetBits(GPIOD,GPIO_Pin_13);
-					vTaskDelay(SEC/(V_MAIN));
-					//------------------------------------
-				}
+				V_MAIN=Vmax;
+				vTaskSuspend(NULL);
 			}
 		}
 		vTaskDelete(NULL);
@@ -148,28 +108,24 @@ void vStop(void* pvParameters)
 
 		while(1)
 		{
-			if((!TaskParams->Task1_event&!TaskParams->Task2_event)||(TaskParams->Task1_event&!TaskParams->Task2_event))
+			if(V_MAIN>0.5)
 			{
-				TaskParams->Task2_state=TASK_OFF;
-				vTaskSuspend(NULL);
-				TaskParams->Task2_state=TASK_ON;
+				//-------------------------------------
+				//-----------MAIN CODE-----------------
+				V_MAIN=Stop(V_MAIN,dt,Accel,&CUR_PHASE,GIV_PHASE,Vmin,Vmax,Vmax_STOP);
+				vTaskDelay(dt*SEC);
+				//-------------------------------------
+				//-----------TEST CODE-----------------
+				/*GPIO_SetBits(GPIOD,GPIO_Pin_14);
+				vTaskDelay(SEC/(V_MAIN));
+				GPIO_ResetBits(GPIOD,GPIO_Pin_14);
+				vTaskDelay(SEC/(V_MAIN));*/
+				//------------------------------------
 			}
 			else
 			{
-				if(V_MAIN>0)
-				{
-					//-------------------------------------
-					//-----------MAIN CODE-----------------
-					//V_MAIN=Stop(V_MAIN,dt,Accel,&CUR_PHASE,GIV_PHASE,Vmin,Vmax,Vmax_STOP);
-					//vTaskDelay(dt*SEC);
-					//-------------------------------------
-					//-----------TEST CODE-----------------
-					GPIO_SetBits(GPIOD,GPIO_Pin_14);
-					vTaskDelay(SEC/(V_MAIN));
-					GPIO_ResetBits(GPIOD,GPIO_Pin_14);
-					vTaskDelay(SEC/(V_MAIN));
-					//------------------------------------
-				}
+				V_MAIN=0;
+				vTaskSuspend(NULL);
 			}
 		}
 		
@@ -178,20 +134,25 @@ void vStop(void* pvParameters)
 
 void vToogleBits(void* pvParameters)
 	{
+		//struct pTaskParamsType* TaskParams=(struct pTaskParamsType*) pvParameters;
+
 		while(1)
 		{
+			if(V_MAIN>1){
 			//-------------------------------------
 			//-----------MAIN CODE-----------------
-			//GPIO_SetBits(GPIOD,GPIO_Pin_15);
-			//vTaskDelay(SEC/(V_MAIN*DEG_SEC));
-			//GPIO_ResetBits(GPIOD,GPIO_Pin_15);
-			//vTaskDelay(SEC/(V_MAIN*DEG_SEC));
+			GPIO_SetBits(GPIOD,GPIO_Pin_15);
+			vTaskDelay(SEC/(V_MAIN*DEG_SEC));
+			GPIO_ResetBits(GPIOD,GPIO_Pin_15);
+			vTaskDelay(SEC/(V_MAIN*DEG_SEC));
 			//-------------------------------------
 			//-----------TEST CODE-----------------
-			GPIO_SetBits(GPIOD,GPIO_Pin_15);
-			vTaskDelay(SEC/(V_MAIN));
-			GPIO_ResetBits(GPIOD,GPIO_Pin_15);
-			vTaskDelay(SEC/(V_MAIN));
+				/*GPIO_SetBits(GPIOD,GPIO_Pin_15);
+				vTaskDelay(SEC/(V_MAIN));
+				GPIO_ResetBits(GPIOD,GPIO_Pin_15);
+				vTaskDelay(SEC/(V_MAIN));*/
+			}
+
 			//------------------------------------
 		}
 		vTaskDelete(NULL);

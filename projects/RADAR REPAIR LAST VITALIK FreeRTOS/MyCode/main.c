@@ -281,7 +281,8 @@ int main(void){
 	xTaskCreate(vStop,(signed char *)"vToogleBits_TASK",128,(void*) &TaskParams,1,&TaskParams.Task2);
 	xTaskCreate(vToogleBits,(signed char *)"vToogleBits_TASK",128,(void*) &TaskParams,1,&TaskParams.Task3);
 	xTaskCreate(vMainSheduler,(signed char *)"vMainSheduler_TASK", 128,(void*) &TaskParams, 1, NULL);
-
+	vTaskSuspend(TaskParams.Task1);
+	vTaskSuspend(TaskParams.Task2);
 
 		
 	vTaskStartScheduler();	
