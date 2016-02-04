@@ -443,7 +443,7 @@
             <File>
               <FileName>Types.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Types.c</FilePath>
+              <FilePath>.\MyCode\Types.c</FilePath>
             </File>
           </Files>
         </Group>

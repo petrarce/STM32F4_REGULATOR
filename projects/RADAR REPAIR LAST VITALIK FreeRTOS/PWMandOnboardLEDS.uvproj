@@ -440,11 +440,6 @@
               <FileType>1</FileType>
               <FilePath>.\MyCode\FlowFunctions.c</FilePath>
             </File>
-            <File>
-              <FileName>Types.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\MyCode\Types.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

@@ -21,4 +21,3 @@ static float Vmax_STOP=10;
 static float GIV_PHASE=0;
 static float CUR_PHASE=0;
 static float V_MAIN=1;
-static struct pTaskParamsType TaskParams;

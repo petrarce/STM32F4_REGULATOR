@@ -46,6 +46,7 @@ void TIM2_IRQHandler(void); // srabativat budet po ego TIM2_ini kagdij KHz or el
 void R_Comm_Slow_Run(uint32_t); // TIM2->CCR1 = 9600; CHANGE PERIOD TIM2 IN TEST MODE  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 void LEDs_ini(void);  // For Debug
+void BUT_ini(void);  // For Debug
 
 void DMA_ini(void);  // DO NOT NEED NOW USART2
 void timer2_ini(void);

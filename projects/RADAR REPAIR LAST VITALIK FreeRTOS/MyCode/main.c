@@ -258,23 +258,18 @@ void vApplicationTickHook(void)
 }
 //------------------------------------------------- MAIN ----------------------------------------------------------------------------
 uint32_t test = 0;
+static struct pTaskParamsType TaskParams={NULL,NULL,NULL,TASK_OFF,TASK_OFF,TASK_OFF,TASK_OFF,TASK_OFF,TASK_OFF};
+
 int main(void){
-	xTaskHandle Task1,Task2,Task3;
-	
-	struct pTaskParamsType TasksParams={Task1,Task2,Task3,TASK_OFF,TASK_OFF,TASK_OFF,TASK_OFF,TASK_OFF,TASK_OFF};
-	/*TasksParams.Task1_event=TASK_OFF;
-	TasksParams.Task2_event=TASK_OFF;
-	TasksParams.Task3_event=TASK_OFF;
-	TasksParams.Task1_state=TASK_OFF;
-	TasksParams.Task2_state=TASK_OFF;
-	TasksParams.Task3_state=TASK_OFF;*/
+	//struct pTaskParamsType TaskParams1;
 
 	SystemCoreClockUpdate(); 
 	SysTick_Config(SystemCoreClock / 1000); 
 	D[0] = 'D';
 	init_usart2();		
 	timer2_ini(); 
-	LEDs_ini();    
+	LEDs_ini(); 
+	BUT_ini();
 	my_USART1_Ini();
 	sprintf(str, "STOP"); 
 	
@@ -282,11 +277,10 @@ int main(void){
 	GPIO_SetBits(GPIOD,GPIO_Pin_14);
 	
 	
-	xTaskCreate(vAcceleration,(signed char *)"vToogleBits_TASK",128,NULL,1,&TasksParams.Task1);
-	xTaskCreate(vStop,(signed char *)"vToogleBits_TASK",128,NULL,1,&TasksParams.Task2);
-	xTaskCreate(vToogleBits,(signed char *)"vToogleBits_TASK",128,NULL,1,&TasksParams.Task3);
-	TaskParams=TasksParams;
-	xTaskCreate(vMainSheduler,(signed char *)"vMainSheduler_TASK", 128, NULL, 1, NULL);
+	xTaskCreate(vAcceleration,(signed char *)"vToogleBits_TASK",128,(void*) &TaskParams,1,&TaskParams.Task1);
+	xTaskCreate(vStop,(signed char *)"vToogleBits_TASK",128,(void*) &TaskParams,1,&TaskParams.Task2);
+	xTaskCreate(vToogleBits,(signed char *)"vToogleBits_TASK",128,(void*) &TaskParams,1,&TaskParams.Task3);
+	xTaskCreate(vMainSheduler,(signed char *)"vMainSheduler_TASK", 128,(void*) &TaskParams, 1, NULL);
 
 
 		

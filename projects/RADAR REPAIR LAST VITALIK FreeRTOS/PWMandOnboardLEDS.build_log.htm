@@ -8,82 +8,27 @@ Project File Date:  02/02/2016
 
 <h2>Output:</h2>
 Build target 'Target 1'
+compiling main.c...
+MyCode\main.c(290): warning:  #1-D: last line of file ends without a newline
+  //---------------------------------------------------- END OF MAIN ----------------------------------------------------------------------
+MyCode\main.c: 1 warning, 0 errors
 linking...
-Program Size: Code=17132 RO-data=424 RW-data=236 ZI-data=24964  
-".\PWMandOnboardLEDS.axf" - 0 Error(s), 0 Warning(s).
-Load "C:\\Users\\Redud1\\Desktop\\Новая папка\\projects\\RADAR REPAIR LAST VITALIK FreeRTOS\\PWMandOnboardLEDS.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-</pre>
-</body>
-</html>
-424 RW-data=236 ZI-data=24964  
+Program Size: Code=17048 RO-data=424 RW-data=236 ZI-data=24940  
 ".\PWMandOnboardLEDS.axf" - 0 Error(s), 1 Warning(s).
 Load "C:\\Users\\Redud1\\Desktop\\Новая папка\\projects\\RADAR REPAIR LAST VITALIK FreeRTOS\\PWMandOnboardLEDS.axf" 
 Erase Done.
 Programming Done.
 Verify OK.
- ZI-data=24964  
+6 ZI-data=24940  
 ".\PWMandOnboardLEDS.axf" - 0 Error(s), 4 Warning(s).
 Load "C:\\Users\\Redud1\\Desktop\\Новая папка\\projects\\RADAR REPAIR LAST VITALIK FreeRTOS\\PWMandOnboardLEDS.axf" 
 Erase Done.
 Programming Done.
 Verify OK.
-44: expression must have pointer type
-                        if((!TaskParams->Task1_event&!TaskParams->Task2_event)||(!TaskParams->Task1_event&TaskParams->Task2_event))
-MyCode\FlowFunctions.c(104): error:  #44: expression must have pointer type
-                                TaskParams->Task1_state=TASK_OFF;
-MyCode\FlowFunctions.c(106): error:  #44: expression must have pointer type
-                                TaskParams->Task1_state=TASK_ON;
-MyCode\FlowFunctions.c(126): warning:  #111-D: statement is unreachable
-                vTaskDelete(NULL);
-MyCode\FlowFunctions.c(136): error:  #44: expression must have pointer type
-                        if((!TaskParams->Task1_event&!TaskParams->Task2_event)||(TaskParams->Task1_event&!TaskParams->Task2_event))
-MyCode\FlowFunctions.c(136): error:  #44: expression must have pointer type
-                        if((!TaskParams->Task1_event&!TaskParams->Task2_event)||(TaskParams->Task1_event&!TaskParams->Task2_event))
-MyCode\FlowFunctions.c(136): error:  #44: expression must have pointer type
-                        if((!TaskParams->Task1_event&!TaskParams->Task2_event)||(TaskParams->Task1_event&!TaskParams->Task2_event))
-MyCode\FlowFunctions.c(136): error:  #44: expression must have pointer type
-                        if((!TaskParams->Task1_event&!TaskParams->Task2_event)||(TaskParams->Task1_event&!TaskParams->Task2_event))
-MyCode\FlowFunctions.c(138): error:  #44: expression must have pointer type
-                                TaskParams->Task2_state=TASK_OFF;
-MyCode\FlowFunctions.c(140): error:  #44: expression must have pointer type
-                                TaskParams->Task2_state=TASK_ON;
-MyCode\FlowFunctions.c(161): warning:  #111-D: statement is unreachable
-                vTaskDelete(NULL);
-MyCode\FlowFunctions.c(182): warning:  #111-D: statement is unreachable
-                vTaskDelete(NULL);
-MyCode\FlowFunctions.c: 4 warnings, 12 errors
-".\PWMandOnboardLEDS.axf" - 12 Error(s), 4 Warning(s).
-Target not created
-kDelete(NULL);
-MyCode\FlowFunctions.c(164): warning:  #111-D: statement is unreachable
-                vTaskDelete(NULL);
-MyCode\FlowFunctions.c(185): warning:  #111-D: statement is unreachable
-                vTaskDelete(NULL);
-MyCode\FlowFunctions.c: 4 warnings, 16 errors
-".\PWMandOnboardLEDS.axf" - 16 Error(s), 4 Warning(s).
-Target not created
-(TaskParams->Task2);
-MyCode\FlowFunctions.c(77): error:  #132: expression must have pointer-to-struct-or-union type
-                                                TaskParams->Task2_event=TASK_OFF;
-MyCode\FlowFunctions.c(78): error:  #132: expression must have pointer-to-struct-or-union type
-                                                while(TaskParams->Task2_state==TASK_ON){};//!!!!!<2>
-MyCode\FlowFunctions.c(87): error:  #132: expression must have pointer-to-struct-or-union type
-                                vTaskSuspend(TaskParams->Task3);
-MyCode\FlowFunctions.c(91): error:  #132: expression must have pointer-to-struct-or-union type
-                                        vTaskResume(TaskParams->Task3);
-MyCode\FlowFunctions.c(95): warning:  #111-D: statement is unreachable
-                vTaskDelete(NULL);
-MyCode\FlowFunctions.c(128): warning:  #111-D: statement is unreachable
-                vTaskDelete(NULL);
-MyCode\FlowFunctions.c(163): warning:  #111-D: statement is unreachable
-                vTaskDelete(NULL);
-MyCode\FlowFunctions.c(184): warning:  #111-D: statement is unreachable
-                vTaskDelete(NULL);
-MyCode\FlowFunctions.c: 4 warnings, 17 errors
-compiling Types.c...
+ming Done.
+Verify OK.
+;
+MyCode\FlowFunctions.c: 4 warnings, 0 errors
 compiling system_stm32f4xx.c...
 compiling misc.c...
 compiling stm32f4xx_adc.c...
@@ -141,5 +86,16 @@ TEST\TEST.c(35): warning:  #111-D: statement is unreachable
 TEST\TEST.c(46): warning:  #111-D: statement is unreachable
         vTaskDelete(NULL);
 TEST\TEST.c: 4 warnings, 0 errors
-".\PWMandOnboardLEDS.axf" - 17 Error(s), 11 Warning(s).
-Target not created
+linking...
+Program Size: Code=17048 RO-data=424 RW-data=236 ZI-data=24940  
+".\PWMandOnboardLEDS.axf" - 0 Error(s), 9 Warning(s).
+unreachable
+        vTaskDelete(NULL);
+TEST\TEST.c(35): warning:  #111-D: statement is unreachable
+        vTaskDelete(NULL);
+TEST\TEST.c(46): warning:  #111-D: statement is unreachable
+        vTaskDelete(NULL);
+TEST\TEST.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=16956 RO-data=424 RW-data=236 ZI-data=24940  
+".\PWMandOnboardLEDS.axf" - 0 Error(s), 11 Warning(s).

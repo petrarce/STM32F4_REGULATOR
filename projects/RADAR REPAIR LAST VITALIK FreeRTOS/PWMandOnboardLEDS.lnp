@@ -4,7 +4,6 @@
 ".\main.o"
 ".\functions.o"
 ".\flowfunctions.o"
-".\types.o"
 ".\system_stm32f4xx.o"
 ".\misc.o"
 ".\stm32f4xx_adc.o"
