@@ -82,7 +82,7 @@ void vAcceleration(void* pvParameters)
 			{
 				//-------------------------------------
 				//-----------MAIN CODE-----------------
-				V_MAIN=Start(V_MAIN,dt,Accel,Vmax);
+				V_MAIN=Start(V_MAIN,dt,UPAccel,Vmax);
 				vTaskDelay(dt*SEC);
 				//-------------------------------------
 				//-----------TEST CODE-----------------
@@ -112,7 +112,7 @@ void vStop(void* pvParameters)
 			{
 				//-------------------------------------
 				//-----------MAIN CODE-----------------
-				V_MAIN=Stop(V_MAIN,dt,Accel,&CUR_PHASE,GIV_PHASE,Vmin,Vmax,Vmax_STOP);
+				V_MAIN=Stop(V_MAIN,dt,DAccel,&CUR_PHASE,GIV_PHASE,Vmin,Vmax,Vmax_STOP);
 				vTaskDelay(dt*SEC);
 				//-------------------------------------
 				//-----------TEST CODE-----------------

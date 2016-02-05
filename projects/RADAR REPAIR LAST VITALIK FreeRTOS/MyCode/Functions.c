@@ -4,10 +4,9 @@
 //#include "Constants.h"
 
 
-//The function 
-//
-//Starts engine (gets it from min speed to max speed)
-//
+//-----------------------------
+//FUNCTIONS
+//-----------------------------
 float Start(float V, float dt, float Accel, float Vmax)
 {
 	if(V<Vmax)
@@ -18,11 +17,6 @@ float Start(float V, float dt, float Accel, float Vmax)
 		V=Vmax;
 	return V;
 }
-
-
-
-
-
 
 float Stop(float V, float dt, float Accel,float* KurrPhase,float GivPhase,float Vmin,float Vmax,float Vmax_STOP)
 {
@@ -52,15 +46,10 @@ float Stop(float V, float dt, float Accel,float* KurrPhase,float GivPhase,float 
 		return V;
 }
 
-
-
-
 float GetV(float Vprev,float dt, float Accel)
 {
 	return Vprev+dt*Accel;
 }
-
-
 
 float GetPhase(float Pprev,float dt,float V)
 {
@@ -72,12 +61,6 @@ float GetPhase(float Pprev,float dt,float V)
 			360-temp;	 
 }
 
-/*float abs(float Digit)
-{
-	if(Digit < 0)
-		return (Digit*(-1));
-	return Digit;
-}*/
 
 float GetDiffer(float ANG_1,float ANG_2)
 {

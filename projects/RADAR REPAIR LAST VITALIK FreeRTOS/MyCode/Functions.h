@@ -1,12 +1,16 @@
 #ifndef Functions
 #define Functions
-
+//-----------------------------
+//FUNCTIONS
+//-----------------------------
 	//
-	//finds new Velocity and Phase of engine and calls function with delay, equals to the velocity
+	//Acelerates engine from Vmin to Vmax with defined acceleration 
 	//
 	float Start(float , float, float , float );
 	//
-	//Sends signfl (High with dt delay (time to set a positive sihnal) Low with "Delay" delay)
+	//stops engine from current V  to 0
+	//	if V>Vmax_STOP then firstfully it slows down the engine winh defined acceleration 
+	//	to Vmax_STOP speed, and than it slows down the engine to a 0
 	//
 	float Stop(float , float , float ,float*,float,float,float, float);
 	//
@@ -26,7 +30,6 @@
 	//
 	float GetDiffer(float,float);
 	
-	//float abs(float );
 
 
 #endif // !Functions
