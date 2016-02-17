@@ -157,3 +157,11 @@ void vToogleBits(void* pvParameters)
 		}
 		vTaskDelete(NULL);
 	}
+	//-----------TEST CODE-----------------
+	float KPhase=0,GivPhase=0,Path;
+	unsigned short int Direction;
+	void TestFunction()
+	{
+		Path=GetPath(GivPhase,KPhase,Direction);
+	}
+	//-----------END_TEST CODE-----------------

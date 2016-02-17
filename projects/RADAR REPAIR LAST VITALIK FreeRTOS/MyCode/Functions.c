@@ -4,6 +4,7 @@
 //#include "Constants.h"
 
 
+
 //-----------------------------
 //FUNCTIONS
 //-----------------------------
@@ -61,15 +62,31 @@ float GetPhase(float Pprev,float dt,float V)
 			360-temp;	 
 }
 
-
 float GetDiffer(float ANG_1,float ANG_2)
 {
 	float temp=ANG_1-ANG_2;
-	if(temp>0)
-		return temp;
-	else
-		return 360+temp;
+	return GetAngel(temp);
+}
+
+float GetPath(float GivP,float KurP,unsigned short int Side)
+{
+	float Path=(Side==CLC_WISE)?GivP-KurP:360-(GivP-KurP);
+	return GetAngel(Path);
 }
 
 
 
+float GetAngel(float Angel)
+{
+	if(Angel>360)
+		return Angel-360;
+	else 
+		if(Angel<0)
+			return 360+Angel;
+		else 
+			return Angel;
+}
+float GetStopPhase(float V,float Accel)
+{
+		return (float)((3/2)*(pow(V,2)/(2*Accel)));
+}

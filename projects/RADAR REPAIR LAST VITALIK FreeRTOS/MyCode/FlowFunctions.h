@@ -17,6 +17,10 @@ void vStop(void* );
 //Switches bits with frequency
 //
 void vToogleBits(void* );
+//
+//Test
+//
+void TestFunction();
 
 
 #endif

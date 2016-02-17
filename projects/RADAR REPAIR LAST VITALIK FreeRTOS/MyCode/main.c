@@ -260,6 +260,7 @@ void vApplicationTickHook(void)
 uint32_t test = 0;
 static struct pTaskParamsType TaskParams={NULL,NULL,NULL,TASK_OFF,TASK_OFF,TASK_OFF,TASK_OFF,TASK_OFF,TASK_OFF};
 
+//#include "Functions.h"
 int main(void){
 	//struct pTaskParamsType TaskParams1;
 
@@ -277,7 +278,7 @@ int main(void){
 	GPIO_SetBits(GPIOD,GPIO_Pin_14);
 	
 	
-	xTaskCreate(vAcceleration,(signed char *)"vToogleBits_TASK",128,(void*) &TaskParams,1,&TaskParams.Task1);
+	/*xTaskCreate(vAcceleration,(signed char *)"vToogleBits_TASK",128,(void*) &TaskParams,1,&TaskParams.Task1);
 	xTaskCreate(vStop,(signed char *)"vToogleBits_TASK",128,(void*) &TaskParams,1,&TaskParams.Task2);
 	xTaskCreate(vToogleBits,(signed char *)"vToogleBits_TASK",128,(void*) &TaskParams,1,&TaskParams.Task3);
 	xTaskCreate(vMainSheduler,(signed char *)"vMainSheduler_TASK", 128,(void*) &TaskParams, 1, NULL);
@@ -285,7 +286,14 @@ int main(void){
 	vTaskSuspend(TaskParams.Task2);
 
 		
-	vTaskStartScheduler();	
+	vTaskStartScheduler();	*/
+	//----------TestCode-----------
+	while(1)
+	{
+		TestFunction();
+	}
+	//----------END_TestCode-----------
+
 }	
 
 //---------------------------------------------------- END OF MAIN ----------------------------------------------------------------------

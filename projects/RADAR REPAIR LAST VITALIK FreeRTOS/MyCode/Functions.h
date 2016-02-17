@@ -29,8 +29,14 @@
 	//Find differens between two angels
 	//
 	float GetDiffer(float,float);
-	
-
+	//
+	//Finds path from kurrent phase (KurP) to given phase (GivP) in the directions of mooving (Side)
+	//
+	float GetPath(float GivP,float KurP,unsigned short int Side);
+	//
+	//Gets angel in diapason of [0;360]
+	//
+	float GetAngel(float Angel);
 
 #endif // !Functions
 
